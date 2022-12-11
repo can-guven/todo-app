@@ -23,7 +23,7 @@ describe("JobCreateForm", () => {
     const jobTitle = "Test Job";
     const priority = 1;
     const jobTitleInput = screen.getByTestId("jobTitle") as HTMLInputElement;
-    const priorityInput = screen.getByTestId("priority") as HTMLInputElement;
+    const priorityInput = screen.getByTestId("priority") as HTMLSelectElement;
     const submitButton = screen.getByRole("icon-button");
     fireEvent.change(jobTitleInput, { target: { value: jobTitle } });
     fireEvent.change(priorityInput, { target: { value: priority } });

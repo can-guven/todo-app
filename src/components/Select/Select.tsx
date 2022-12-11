@@ -31,11 +31,7 @@ const Select: FC<SelectProps> = forwardRef<HTMLSelectElement, SelectProps>(
     } = props;
     return (
       <div className={className}>
-        {label && (
-          <label className="select__label" htmlFor={name}>
-            {label}
-          </label>
-        )}
+        {label && <label htmlFor={name}>{label}</label>}
         <select
           className={`select ${error ? "error" : ""}`}
           disabled={disabled}
@@ -46,8 +42,9 @@ const Select: FC<SelectProps> = forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           required={required}
           value={value}
+          data-testid={name}
         >
-          {children}
+          {placeholder && <option value="">{placeholder}</option>}
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

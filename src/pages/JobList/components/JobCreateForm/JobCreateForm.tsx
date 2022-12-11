@@ -2,7 +2,24 @@ import { FC, useState } from "react";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import Button from "../../../../components/Button/Button";
 import Input from "../../../../components/Input/Input";
+import Select from "../../../../components/Select/Select";
 import { Job } from "../../../../types";
+import { isEmpty } from "../../../../utils";
+
+const priorities = [
+  {
+    label: "Trivial",
+    value: "1",
+  },
+  {
+    label: "Regular",
+    value: "2",
+  },
+  {
+    label: "Urgent",
+    value: "3",
+  },
+];
 
 interface JobCreateFormProps {
   onSubmit: (job: Job) => void;
@@ -11,9 +28,30 @@ interface JobCreateFormProps {
 const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
   const [jobTitle, setJobTitle] = useState<string>("");
   const [priority, setPriority] = useState<string>("");
+  const [jobTitleError, setJobTitleError] = useState<string>("");
+  const [priorityError, setPriorityError] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setJobTitleError("");
+    setPriorityError("");
+
+    if(isEmpty(jobTitle)) {
+      setJobTitleError("Job title is required");
+      return;
+    }
+
+    if(isEmpty(priority)) {
+      setPriorityError("Priority is required");
+      return;
+    }
+
+    if(jobTitle.length > 250) {
+      setJobTitleError("Job title must be less than 250 characters");
+      return;
+    }
+
     onSubmit({ jobTitle, priority: parseInt(priority) });
   };
 
@@ -31,17 +69,19 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
               onChange={(e) => {
                 setJobTitle(e.target.value);
               }}
+              error={jobTitleError}
             />
           </div>
           <div className="col-md-4">
-            <Input
-              id="priority"
-              value={priority}
-              name="priority"
-              label="Priority"
+            <Select
+              name={"priority"}
+              options={priorities}
               onChange={(e) => {
                 setPriority(e.target.value);
               }}
+              label="Priority"
+              placeholder="Select Priority"
+              error={priorityError}
             />
           </div>
           <div className="col-md-2">
