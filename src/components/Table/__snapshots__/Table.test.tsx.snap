@@ -3,9 +3,6 @@
 exports[`Table should render 1`] = `
 <div>
   <div>
-    <h1>
-      Table
-    </h1>
     <table
       class="table"
     >
@@ -25,9 +22,6 @@ exports[`Table should render 1`] = `
 exports[`Table should render columns 1`] = `
 <div>
   <div>
-    <h1>
-      Table
-    </h1>
     <table
       class="table"
     >
@@ -35,10 +29,14 @@ exports[`Table should render columns 1`] = `
         class="table-head"
       >
         <tr>
-          <th>
+          <th
+            class="table-head-cell"
+          >
             Name
           </th>
-          <th>
+          <th
+            class="table-head-cell"
+          >
             Priority
           </th>
         </tr>
@@ -54,9 +52,6 @@ exports[`Table should render columns 1`] = `
 exports[`Table should render data 1`] = `
 <div>
   <div>
-    <h1>
-      Table
-    </h1>
     <table
       class="table"
     >
@@ -64,10 +59,14 @@ exports[`Table should render data 1`] = `
         class="table-head"
       >
         <tr>
-          <th>
+          <th
+            class="table-head-cell"
+          >
             Name
           </th>
-          <th>
+          <th
+            class="table-head-cell"
+          >
             Priority
           </th>
         </tr>
@@ -75,19 +74,31 @@ exports[`Table should render data 1`] = `
       <tbody
         class="table-body"
       >
-        <tr>
-          <td>
+        <tr
+          class="table-body-row"
+        >
+          <td
+            class="table-body-row-cell"
+          >
             name1
           </td>
-          <td>
+          <td
+            class="table-body-row-cell"
+          >
             priority1
           </td>
         </tr>
-        <tr>
-          <td>
+        <tr
+          class="table-body-row"
+        >
+          <td
+            class="table-body-row-cell"
+          >
             name2
           </td>
-          <td>
+          <td
+            class="table-body-row-cell"
+          >
             priority2
           </td>
         </tr>
@@ -100,9 +111,6 @@ exports[`Table should render data 1`] = `
 exports[`Table should render data with render function 1`] = `
 <div>
   <div>
-    <h1>
-      Table
-    </h1>
     <table
       class="table"
     >
@@ -110,10 +118,14 @@ exports[`Table should render data with render function 1`] = `
         class="table-head"
       >
         <tr>
-          <th>
+          <th
+            class="table-head-cell"
+          >
             Name
           </th>
-          <th>
+          <th
+            class="table-head-cell"
+          >
             Priority
           </th>
         </tr>
@@ -121,71 +133,33 @@ exports[`Table should render data with render function 1`] = `
       <tbody
         class="table-body"
       >
-        <tr>
-          <td>
+        <tr
+          class="table-body-row"
+        >
+          <td
+            class="table-body-row-cell"
+          >
             name1
           </td>
-          <td>
+          <td
+            class="table-body-row-cell"
+          >
             <div>
               priority1
             </div>
           </td>
         </tr>
-        <tr>
-          <td>
+        <tr
+          class="table-body-row"
+        >
+          <td
+            class="table-body-row-cell"
+          >
             name2
           </td>
-          <td>
-            <div>
-              priority2
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-`;
-
-exports[`Table should render data with render function and click 1`] = `
-<div>
-  <div>
-    <h1>
-      Table
-    </h1>
-    <table
-      class="table"
-    >
-      <thead
-        class="table-head"
-      >
-        <tr>
-          <th>
-            Name
-          </th>
-          <th>
-            Priority
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        class="table-body"
-      >
-        <tr>
-          <td>
-            name1
-          </td>
-          <td>
-            <div>
-              priority1
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            name2
-          </td>
-          <td>
+          <td
+            class="table-body-row-cell"
+          >
             <div>
               priority2
             </div>

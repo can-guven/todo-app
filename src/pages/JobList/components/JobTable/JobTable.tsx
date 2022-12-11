@@ -30,7 +30,12 @@ const JobTable: FC<JobTableProps> = (props) => {
     },
   ];
 
-  return <Table columns={columns} dataSource={jobs} />;
+  return (
+    <div>
+      <h3>Job List</h3>
+      <Table columns={columns} dataSource={jobs} />
+    </div>
+  );
 };
 
 export default JobTable;
