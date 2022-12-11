@@ -52,7 +52,7 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
       return;
     }
 
-    onSubmit({ jobTitle, priority:priority as JobPriority });
+    onSubmit({ jobTitle, priority: priority as JobPriority });
   };
 
   return (

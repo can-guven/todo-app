@@ -16,11 +16,17 @@ const JobTable: FC<JobTableProps> = (props) => {
     {
       name: "jobTitle",
       label: "Name",
+      sortable: true,
     },
     {
       name: "priority",
       label: "Priority",
-      render: (record: Job) => <Button color={JobPriorityColorMap[record.priority]}>{JobPriorityMap[record.priority]}</Button>,
+      render: (record: Job) => (
+        <Button color={JobPriorityColorMap[record.priority]}>
+          {JobPriorityMap[record.priority]}
+        </Button>
+      ),
+      sortable: true,
     },
     {
       name: "action",
@@ -46,7 +52,12 @@ const JobTable: FC<JobTableProps> = (props) => {
   return (
     <div>
       <h3>Job List</h3>
-      <Table columns={columns} dataSource={jobs} />
+      <Table
+        columns={columns}
+        dataSource={jobs}
+        defaultSortOrder={false}
+        defualtSortColumn="priority"
+      />
     </div>
   );
 };

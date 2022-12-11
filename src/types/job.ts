@@ -5,14 +5,14 @@ export interface Job {
 
 export enum JobPriority {
   Trivial = "1",
-  Regular ="2",
+  Regular = "2",
   Urgent = "3",
 }
 
 export enum JobPriorityColor {
-  Trivial = 'primary',
-  Regular = 'warning',
-  Urgent = 'danger',
+  Trivial = "primary",
+  Regular = "warning",
+  Urgent = "danger",
 }
 
 export const JobPriorityColorMap = {
@@ -22,7 +22,7 @@ export const JobPriorityColorMap = {
 };
 
 export const JobPriorityMap = {
-  [JobPriority.Trivial]: 'Trivial',
-  [JobPriority.Regular]: 'Regular',
-  [JobPriority.Urgent]: 'Urgent',
+  [JobPriority.Trivial]: "Trivial",
+  [JobPriority.Regular]: "Regular",
+  [JobPriority.Urgent]: "Urgent",
 };
