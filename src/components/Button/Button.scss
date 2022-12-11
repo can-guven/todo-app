@@ -1,0 +1,28 @@
+@import '../../assets/styles/sass/variables';
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &-primary {
+        background-color: $primary;
+        color: #fff;
+    }
+    &-secondary {
+        background-color: $secondary;
+        color: #fff;
+    }
+    &-icon {
+        display: inline-flex;
+        align-items: center;
+        & > span {
+            margin-left: 5px;
+        }
+    }
+    &-disabled {
+        background-color: $disabled;
+        color: #666666;
+        cursor: not-allowed;
+    }
+}
