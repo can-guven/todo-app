@@ -1,3 +1,4 @@
+import { FC } from "react";
 import "./Button.scss";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,7 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-const Button = (props: ButtonProps) => {
+const Button: FC<ButtonProps> = (props: ButtonProps) => {
   const { children, color = "primary", type = "button", icon, ...rest } = props;
   return (
     <button

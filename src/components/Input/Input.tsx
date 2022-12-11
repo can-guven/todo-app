@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { FC, forwardRef } from "react";
 import "./Input.scss";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -11,38 +11,40 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const {
-    label,
-    type = "text",
-    placeholder,
-    value,
-    onChange,
-    disabled,
-    error,
-    ...rest
-  } = props;
+const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
+  (props, ref) => {
+    const {
+      label,
+      type = "text",
+      placeholder,
+      value,
+      onChange,
+      disabled,
+      error,
+      ...rest
+    } = props;
 
-  return (
-    <div className="input-container">
-      {label && <label>{label}</label>}
-      <input
-        className={`input ${error ? "error" : ""} ${
-          disabled ? "disabled" : ""
-        } `}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        ref={ref}
-        // eslint-disable-next-line jsx-a11y/aria-role
-        role="input"
-        {...rest}
-      />
-      {error && <span className="error">{error}</span>}
-    </div>
-  );
-});
+    return (
+      <div className="input-container">
+        {label && <label>{label}</label>}
+        <input
+          className={`input ${error ? "error" : ""} ${
+            disabled ? "disabled" : ""
+          } `}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          ref={ref}
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="input"
+          {...rest}
+        />
+        {error && <span className="error">{error}</span>}
+      </div>
+    );
+  }
+);
 
 export default Input;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer>
+  <p
+    className="text-center"
+  >
+    © 
+    2022
+     
+    <a
+      href="https://www.rise-consulting.net/consulting"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Rise Technology Case Study
+    </a>
+  </p>
+</footer>
+`;

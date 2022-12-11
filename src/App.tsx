@@ -1,12 +1,13 @@
 import "./assets/styles/css/bootstrap-grid.min.css";
 import "./assets/styles/sass/index.scss";
-import Header from "./components/Header/Header";
+import Layout from "./components/Layout/Layout";
+import JobList from "./pages/JobList/JobList";
 
 function App() {
   return (
-    <div>
-      <Header />
-    </div>
+    <Layout>
+      <JobList />
+    </Layout>
   );
 }
 

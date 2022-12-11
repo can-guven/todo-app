@@ -1,6 +1,9 @@
+import { FC } from "react";
 import "./Header.scss";
 
-const Header = () => {
+interface HeaderProps {}
+
+const Header: FC<HeaderProps> = () => {
   return (
     <header className="header">
       <h3>Todo App</h3>
