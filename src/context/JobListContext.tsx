@@ -1,10 +1,4 @@
-import {
-  createContext,
-  FC,
-  useCallback,
-  useContext,
-  useState,
-} from "react";
+import { createContext, FC, useCallback, useContext, useState } from "react";
 
 import { Job } from "../types";
 

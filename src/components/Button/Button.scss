@@ -13,6 +13,17 @@
         background-color: $secondary;
         color: #fff;
     }
+
+    &-danger {
+        background-color: $danger;
+        color: #fff;
+    }
+    
+    &-warning {
+        background-color: $warning;
+        color: #fff;
+    }
+
     &-icon {
         display: inline-flex;
         align-items: center;
