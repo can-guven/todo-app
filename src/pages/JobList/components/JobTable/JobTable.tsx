@@ -2,15 +2,15 @@ import { FC } from "react";
 import { BsFillTrashFill, BsPencilFill } from "react-icons/bs";
 import Button from "../../../../components/Button/Button";
 import Table from "../../../../components/Table/Table";
+import { useJobListContext } from "../../../../context/JobListContext";
 import { Job, JobPriorityColorMap, JobPriorityMap } from "../../../../types";
 
 interface JobTableProps {
-  jobs: Job[];
   loading?: boolean;
 }
 
 const JobTable: FC<JobTableProps> = (props) => {
-  const { jobs } = props;
+  const { jobs, onJobSelect } = useJobListContext();
 
   const columns = [
     {
@@ -36,7 +36,7 @@ const JobTable: FC<JobTableProps> = (props) => {
           <Button
             className="me-2"
             color="primary"
-            onClick={() => {}}
+            onClick={() => onJobSelect(record)}
             icon={<BsPencilFill />}
           />
           <Button

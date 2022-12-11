@@ -44,7 +44,8 @@ const Table: FC<TableProps> = (props) => {
               setSortOrder(!sortOrder);
             }}
           >
-            {sortOrder ? <BsSortDownAlt /> : <BsSortUpAlt />} {column.name === sortColumn && <b>Active Sorting</b>}
+            {sortOrder ? <BsSortDownAlt /> : <BsSortUpAlt />}{" "}
+            {column.name === sortColumn && <b>Active Sorting</b>}
           </span>
         )}
       </th>

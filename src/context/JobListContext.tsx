@@ -10,6 +10,9 @@ interface JobListContextType {
   onJobUpdate: (job: Job) => void;
   onJobCreate: (job: Job) => void;
   loading: boolean;
+  selectedJob: Job | null;
+  onJobSelect: (job: Job | null) => void;
+  setSelectedJob: (job: Job | null) => void;
 }
 
 const JobListContext = createContext<JobListContextType>({
@@ -20,6 +23,9 @@ const JobListContext = createContext<JobListContextType>({
   onJobUpdate: () => {},
   onJobCreate: () => {},
   loading: false,
+  selectedJob: null,
+  onJobSelect: () => {},
+  setSelectedJob: () => {},
 });
 
 interface JobListProviderProps {
@@ -29,6 +35,7 @@ interface JobListProviderProps {
 const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   const getJobs = useCallback(() => {
     setLoading(true);
@@ -53,14 +60,26 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
       });
   }, []);
 
-  const onJobDelete = (job: Job) => {};
+  const onJobDelete = (job: Job) => {
+    const newJobs = jobs.filter((j) => j.id !== job.id);
+    setJobs(newJobs);
+    localStorage.setItem("jobs", JSON.stringify(newJobs));
+  };
 
-  const onJobUpdate = (job: Job) => {};
+  const onJobUpdate = (job: Job) => {
+    const newJobs = jobs.map((j) => (j.id === job.id ? job : j));
+    setJobs(newJobs);
+    localStorage.setItem("jobs", JSON.stringify(newJobs));
+  };
 
   const onJobCreate = (job: Job) => {
     const newJobs = [...jobs, job];
     setJobs(newJobs);
     localStorage.setItem("jobs", JSON.stringify(newJobs));
+  };
+
+  const onJobSelect = (job: Job | null) => {
+    setSelectedJob(job);
   };
 
   return (
@@ -73,6 +92,9 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
         onJobUpdate,
         onJobCreate,
         loading,
+        selectedJob,
+        onJobSelect,
+        setSelectedJob,
       }}
     >
       {children}

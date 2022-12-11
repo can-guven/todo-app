@@ -3,23 +3,9 @@ import { BsFillPlusSquareFill } from "react-icons/bs";
 import Button from "../../../../components/Button/Button";
 import Input from "../../../../components/Input/Input";
 import Select from "../../../../components/Select/Select";
-import { Job, JobPriority } from "../../../../types";
+import { Job, JobPriority, priorities } from "../../../../types";
 import { isEmpty } from "../../../../utils";
-
-const priorities = [
-  {
-    label: "Trivial",
-    value: JobPriority.Trivial,
-  },
-  {
-    label: "Regular",
-    value: JobPriority.Regular,
-  },
-  {
-    label: "Urgent",
-    value: JobPriority.Urgent,
-  },
-];
+import { v4 as uuidv4 } from "uuid";
 
 interface JobCreateFormProps {
   onSubmit: (job: Job) => void;
@@ -52,7 +38,7 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
       return;
     }
 
-    onSubmit({ jobTitle, priority: priority as JobPriority });
+    onSubmit({ jobTitle, priority: priority as JobPriority, id: uuidv4() });
   };
 
   return (

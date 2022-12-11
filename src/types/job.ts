@@ -1,4 +1,5 @@
 export interface Job {
+  id: string;
   jobTitle: string;
   priority: JobPriority;
 }
@@ -26,3 +27,18 @@ export const JobPriorityMap = {
   [JobPriority.Regular]: "Regular",
   [JobPriority.Urgent]: "Urgent",
 };
+
+export const priorities = [
+  {
+    label: "Trivial",
+    value: JobPriority.Trivial,
+  },
+  {
+    label: "Regular",
+    value: JobPriority.Regular,
+  },
+  {
+    label: "Urgent",
+    value: JobPriority.Urgent,
+  },
+];
