@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table should render 1`] = `
+<div>
+  <div>
+    <h1>
+      Table
+    </h1>
+    <table
+      class="table"
+    >
+      <thead
+        class="table-head"
+      >
+        <tr />
+      </thead>
+      <tbody
+        class="table-body"
+      />
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Table should render columns 1`] = `
+<div>
+  <div>
+    <h1>
+      Table
+    </h1>
+    <table
+      class="table"
+    >
+      <thead
+        class="table-head"
+      >
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Priority
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="table-body"
+      />
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Table should render data 1`] = `
+<div>
+  <div>
+    <h1>
+      Table
+    </h1>
+    <table
+      class="table"
+    >
+      <thead
+        class="table-head"
+      >
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Priority
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="table-body"
+      >
+        <tr>
+          <td>
+            name1
+          </td>
+          <td>
+            priority1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            name2
+          </td>
+          <td>
+            priority2
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Table should render data with render function 1`] = `
+<div>
+  <div>
+    <h1>
+      Table
+    </h1>
+    <table
+      class="table"
+    >
+      <thead
+        class="table-head"
+      >
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Priority
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="table-body"
+      >
+        <tr>
+          <td>
+            name1
+          </td>
+          <td>
+            <div>
+              priority1
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            name2
+          </td>
+          <td>
+            <div>
+              priority2
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Table should render data with render function and click 1`] = `
+<div>
+  <div>
+    <h1>
+      Table
+    </h1>
+    <table
+      class="table"
+    >
+      <thead
+        class="table-head"
+      >
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Priority
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="table-body"
+      >
+        <tr>
+          <td>
+            name1
+          </td>
+          <td>
+            <div>
+              priority1
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            name2
+          </td>
+          <td>
+            <div>
+              priority2
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

@@ -1,5 +1,7 @@
 # Install the dependencies
 yarn install
+# storybook
+yarn run storybook
 # Start the app in development mode (hot-code reloading, error reporting, etc.)
 yarn run start
 # Lint the files
