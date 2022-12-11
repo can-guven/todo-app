@@ -1,17 +1,26 @@
+import { useEffect } from "react";
+import { useJobListContext } from "../../context/JobListContext";
 import { Job } from "../../types";
 import JobCreateForm from "./components/JobCreateForm/JobCreateForm";
 import JobTable from "./components/JobTable/JobTable";
 
 const JobList = () => {
+  const { jobs, getJobs, loading, onJobCreate } = useJobListContext();
+
+  useEffect(() => {
+    getJobs();
+  }, [getJobs]);
+
+  const onSubmit = (job: Job) => {
+    onJobCreate(job);
+  };
+
   return (
     <div>
-      <JobCreateForm
-        onSubmit={function (job: Job): void {
-          console.log(job);
-        }}
-      />
-      <JobTable jobs={[]} onJobClick={function (job: Job): void {}} />
+      <JobCreateForm onSubmit={onSubmit} />
+      <JobTable jobs={jobs} loading={loading} />
     </div>
   );
 };
+
 export default JobList;

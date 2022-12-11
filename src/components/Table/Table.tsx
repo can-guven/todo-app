@@ -27,8 +27,8 @@ const Table: FC<TableProps> = (props) => {
           </tr>
         </thead>
         <tbody className="table-body">
-          {dataSource.map((record) => (
-            <tr key={record.key} className="table-body-row">
+          {dataSource.map((record, index) => (
+            <tr key={index} className="table-body-row">
               {columns.map((column) => {
                 if (column.render) {
                   return (

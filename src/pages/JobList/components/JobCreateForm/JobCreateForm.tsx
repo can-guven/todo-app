@@ -37,17 +37,17 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
     setJobTitleError("");
     setPriorityError("");
 
-    if(isEmpty(jobTitle)) {
+    if (isEmpty(jobTitle)) {
       setJobTitleError("Job title is required");
       return;
     }
 
-    if(isEmpty(priority)) {
+    if (isEmpty(priority)) {
       setPriorityError("Priority is required");
       return;
     }
 
-    if(jobTitle.length > 250) {
+    if (jobTitle.length > 250) {
       setJobTitleError("Job title must be less than 250 characters");
       return;
     }

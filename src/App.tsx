@@ -1,13 +1,16 @@
 import "./assets/styles/css/bootstrap-grid.min.css";
 import "./assets/styles/sass/index.scss";
 import Layout from "./components/Layout/Layout";
+import { JobListProvider } from "./context/JobListContext";
 import JobList from "./pages/JobList/JobList";
 
 function App() {
   return (
-    <Layout>
-      <JobList />
-    </Layout>
+    <JobListProvider>
+      <Layout>
+        <JobList />
+      </Layout>
+    </JobListProvider>
   );
 }
 

@@ -3,30 +3,26 @@ import Table from "../../../../components/Table/Table";
 
 interface JobTableProps {
   jobs: any[];
-  onJobClick: (job: any) => void;
+  loading?: boolean;
 }
 
 const JobTable: FC<JobTableProps> = (props) => {
-  const { jobs, onJobClick } = props;
+  const { jobs } = props;
 
   const columns = [
     {
-      name: "name",
+      name: "jobTitle",
       label: "Name",
     },
     {
       name: "priority",
       label: "Priority",
-      render: (record: any) => (
-        <div onClick={() => onJobClick(record)}>{record.priority}</div>
-      ),
+      render: (record: any) => <div>Selam</div>,
     },
     {
       name: "action",
       label: "Action",
-      render: (record: any) => (
-        <div onClick={() => onJobClick(record)}>Action</div>
-      ),
+      render: (record: any) => <div>Action</div>,
     },
   ];
 
