@@ -3,7 +3,7 @@ import { createContext, FC, useCallback, useContext, useState } from "react";
 import { Job } from "../types";
 
 interface JobListContextType {
-  getJobs: () => void;
+  getJobs: (filters: any) => void;
   jobs: Job[];
   setJobs: (jobs: Job[]) => void;
   onJobDelete: (job: Job) => void;
@@ -13,10 +13,12 @@ interface JobListContextType {
   selectedJob: Job | null;
   onJobSelect: (job: Job | null) => void;
   setSelectedJob: (job: Job | null) => void;
+  onFilter: (filter: any) => void;
+  filters: any;
 }
 
 const JobListContext = createContext<JobListContextType>({
-  getJobs: () => {},
+  getJobs: (filters: any) => {},
   jobs: [],
   setJobs: () => {},
   onJobDelete: () => {},
@@ -26,6 +28,8 @@ const JobListContext = createContext<JobListContextType>({
   selectedJob: null,
   onJobSelect: () => {},
   setSelectedJob: () => {},
+  onFilter: () => {},
+  filters: {},
 });
 
 interface JobListProviderProps {
@@ -36,28 +40,30 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-
-  const getJobs = useCallback(() => {
+  const [filters, setFilters] = useState<any>({});
+  const getJobs = useCallback((filters: any) => {
     setLoading(true);
 
-    const jobs = localStorage.getItem("jobs");
+    let jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-    if (jobs) {
-      setJobs(JSON.parse(jobs));
-      setLoading(false);
-      return;
+    if (!jobs) {
+      localStorage.setItem("jobs", JSON.stringify([]));
     }
 
-    fetch("http://localhost:3000/api/jobs")
-      .then((response) => response.json())
-      .then((data) => {
-        setJobs(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
+    if (filters.filterTitle) {
+      jobs = jobs.filter(
+        (job: Job) => job.jobTitle.includes(filters.filterTitle)
+      );
+    }
+
+    if (filters.filterPriority) {
+      jobs = jobs.filter(
+        (job: Job) => job.priority === filters.filterPriority
+      );
+    }
+    
+    setJobs(jobs);
+    setLoading(false);
   }, []);
 
   const onJobDelete = (job: Job) => {
@@ -82,6 +88,10 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
     setSelectedJob(job);
   };
 
+  const onFilter = (filter: any) => {
+    setFilters(filter);
+  };
+
   return (
     <JobListContext.Provider
       value={{
@@ -95,6 +105,8 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
         selectedJob,
         onJobSelect,
         setSelectedJob,
+        onFilter,
+        filters,
       }}
     >
       {children}
