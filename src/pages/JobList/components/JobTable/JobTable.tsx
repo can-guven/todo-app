@@ -32,18 +32,21 @@ const JobTable: FC<JobTableProps> = (props) => {
       name: "action",
       label: "Action",
       render: (record: any) => (
-        <div>
-          <Button
-            className="me-2"
-            color="primary"
-            onClick={() => onJobSelect(record)}
-            icon={<BsPencilFill />}
-          />
-          <Button
-            color="secondary"
-            onClick={() => setSelectedJobForDelete(record)}
-            icon={<BsFillTrashFill />}
-          />
+        <div className="row">
+          <div className="col-md-2 mb-2">
+            <Button
+              color="primary"
+              onClick={() => onJobSelect(record)}
+              icon={<BsPencilFill />}
+            />
+          </div>
+          <div className="col-md-2">
+            <Button
+              color="secondary"
+              onClick={() => setSelectedJobForDelete(record)}
+              icon={<BsFillTrashFill />}
+            />
+          </div>
         </div>
       ),
     },

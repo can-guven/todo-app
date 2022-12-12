@@ -70,7 +70,7 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
               error={priorityError}
             />
           </div>
-          <div className="col-md-2">
+          <div className="col-md-2 mb-2">
             <Button type="submit" icon={<BsFillPlusSquareFill />}>
               Create
             </Button>

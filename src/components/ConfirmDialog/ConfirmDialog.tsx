@@ -18,8 +18,12 @@ const ConfirmDialog: FC<ConfirmDialogProps> = (props) => {
       <div className="confirm-content">
         {message}
         <div className="confirm-content-btns">
-          <Button color="primary" onClick={onConfirm}>Yes</Button>
-          <Button color="secondary" onClick={onCancel}>No</Button>
+          <Button color="primary" onClick={onConfirm}>
+            Yes
+          </Button>
+          <Button color="secondary" onClick={onCancel}>
+            No
+          </Button>
         </div>
       </div>
     </div>
