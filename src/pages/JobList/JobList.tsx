@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ConfirmDialog from "../../components/ConfirmDialog/ConfirmDialog";
 import { useJobListContext } from "../../context/JobListContext";
 import { Job } from "../../types";
 import JobCreateForm from "./components/JobCreateForm/JobCreateForm";
@@ -16,6 +17,9 @@ const JobList = () => {
     onJobUpdate,
     onFilter,
     filters,
+    selectedJobForDelete,
+    onJobDelete,
+    setSelectedJobForDelete,
   } = useJobListContext();
 
   useEffect(() => {
@@ -38,12 +42,28 @@ const JobList = () => {
     onFilter(filter);
   };
 
+  const onConfirm = () => {
+    onJobDelete(selectedJobForDelete as Job);
+    setSelectedJobForDelete(null);
+  };
+
+  const onCancel = () => {
+    setSelectedJobForDelete(null);
+  };
+
   return (
     <div>
       <JobCreateForm onSubmit={onSubmit} />
       <JobEditModal job={selectedJob} onClose={onClose} onSave={onSave} />
       <JobFilterForm onFilter={handleFilter} />
       <JobTable loading={loading} />
+      <ConfirmDialog
+        isOpen={selectedJobForDelete ? true : false}
+        title=""
+        message="Are you sure you want to delete it?"
+        onConfirm={onConfirm}
+        onCancel={onCancel}
+      />
     </div>
   );
 };

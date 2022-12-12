@@ -10,7 +10,7 @@ interface JobTableProps {
 }
 
 const JobTable: FC<JobTableProps> = (props) => {
-  const { jobs, onJobSelect } = useJobListContext();
+  const { jobs, onJobSelect, setSelectedJobForDelete } = useJobListContext();
 
   const columns = [
     {
@@ -41,7 +41,7 @@ const JobTable: FC<JobTableProps> = (props) => {
           />
           <Button
             color="secondary"
-            onClick={() => {}}
+            onClick={() => setSelectedJobForDelete(record)}
             icon={<BsFillTrashFill />}
           />
         </div>

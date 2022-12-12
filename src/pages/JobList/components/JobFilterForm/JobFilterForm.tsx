@@ -14,7 +14,7 @@ const JobFilterForm: FC<JobFilterFormProps> = (props) => {
   const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterTitle(e.target.value);
     props.onFilter({
-       filterTitle: e.target.value,
+      filterTitle: e.target.value,
       filterPriority,
     });
   };
@@ -22,7 +22,7 @@ const JobFilterForm: FC<JobFilterFormProps> = (props) => {
     setFilterPriority(e.target.value);
     props.onFilter({
       filterTitle,
-      filterPriority:e.target.value,
+      filterPriority: e.target.value,
     });
   };
 
@@ -35,14 +35,14 @@ const JobFilterForm: FC<JobFilterFormProps> = (props) => {
       <h3>Job Filter</h3>
       <form onSubmit={handleSubmit}>
         <div className="row align-items-end">
-          <div className="col-md-8">
+          <div className="col-md-8 mb-2">
             <Input
               label="Job Name"
               name="filter-title"
               onChange={onTitleChange}
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 mb-2">
             <Select
               name={"filter-priority"}
               label="Priority"

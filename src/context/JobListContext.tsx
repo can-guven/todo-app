@@ -15,6 +15,8 @@ interface JobListContextType {
   setSelectedJob: (job: Job | null) => void;
   onFilter: (filter: any) => void;
   filters: any;
+  selectedJobForDelete: Job | null;
+  setSelectedJobForDelete: (job: Job | null) => void;
 }
 
 const JobListContext = createContext<JobListContextType>({
@@ -30,6 +32,8 @@ const JobListContext = createContext<JobListContextType>({
   setSelectedJob: () => {},
   onFilter: () => {},
   filters: {},
+  selectedJobForDelete: null,
+  setSelectedJobForDelete: () => {},
 });
 
 interface JobListProviderProps {
@@ -41,6 +45,9 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [filters, setFilters] = useState<any>({});
+  const [selectedJobForDelete, setSelectedJobForDelete] = useState<Job | null>(
+    null
+  );
   const getJobs = useCallback((filters: any) => {
     setLoading(true);
 
@@ -51,17 +58,15 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
     }
 
     if (filters.filterTitle) {
-      jobs = jobs.filter(
-        (job: Job) => job.jobTitle.includes(filters.filterTitle)
+      jobs = jobs.filter((job: Job) =>
+        job.jobTitle.includes(filters.filterTitle)
       );
     }
 
     if (filters.filterPriority) {
-      jobs = jobs.filter(
-        (job: Job) => job.priority === filters.filterPriority
-      );
+      jobs = jobs.filter((job: Job) => job.priority === filters.filterPriority);
     }
-    
+
     setJobs(jobs);
     setLoading(false);
   }, []);
@@ -107,6 +112,8 @@ const JobListProvider: FC<JobListProviderProps> = ({ children }) => {
         setSelectedJob,
         onFilter,
         filters,
+        selectedJobForDelete,
+        setSelectedJobForDelete,
       }}
     >
       {children}

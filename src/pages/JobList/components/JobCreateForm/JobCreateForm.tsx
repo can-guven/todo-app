@@ -46,7 +46,7 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
       <h3>Create New Job</h3>
       <form onSubmit={handleSubmit}>
         <div className="row align-items-end">
-          <div className="col-md-6">
+          <div className="col-md-6 mb-2">
             <Input
               id="jobTitle"
               value={jobTitle}
@@ -58,7 +58,7 @@ const JobCreateForm: FC<JobCreateFormProps> = ({ onSubmit }) => {
               error={jobTitleError}
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 mb-2">
             <Select
               name={"priority"}
               options={priorities}
